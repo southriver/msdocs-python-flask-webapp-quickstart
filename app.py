@@ -1,7 +1,7 @@
 from datetime import datetime
 import json
+from pathlib import Path
 import pickle
-from click import Path
 from flask import Flask, render_template, request, redirect, url_for, send_from_directory
 import numpy as np
 app = Flask(__name__)
