@@ -15,6 +15,7 @@ def index():
 #prediction function
 def ValuePredictor(to_predict_list):
     to_predict = np.array(to_predict_list).reshape(1,12)
+    # load model
     THIS_FOLDER = Path(__file__).parent.resolve()
     my_model_file = THIS_FOLDER / "model.pkl"    
     loaded_model = pickle.load(open(my_model_file,"rb"))
