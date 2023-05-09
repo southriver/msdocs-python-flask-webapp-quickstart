@@ -1,6 +1,7 @@
 from datetime import datetime
 import json
 import pickle
+from click import Path
 from flask import Flask, render_template, request, redirect, url_for, send_from_directory
 import numpy as np
 app = Flask(__name__)
@@ -14,7 +15,9 @@ def index():
 #prediction function
 def ValuePredictor(to_predict_list):
     to_predict = np.array(to_predict_list).reshape(1,12)
-    loaded_model = pickle.load(open("model.pkl","rb"))
+    THIS_FOLDER = Path(__file__).parent.resolve()
+    my_model_file = THIS_FOLDER / "model.pkl"    
+    loaded_model = pickle.load(open(my_model_file,"rb"))
     result = loaded_model.predict(to_predict)
     return result[0]
 
